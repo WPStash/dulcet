@@ -17,6 +17,7 @@ function dulcet_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
+		'type'      => 'click',
 		'render'    => 'dulcet_infinite_scroll_render',
 		'footer'    => 'page',
 	) );

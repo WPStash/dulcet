@@ -28,7 +28,7 @@ if ( post_password_required() ) {
 		<h2 class="comments-title">
 			<?php
 				printf( // WPCS: XSS OK.
-					esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'dulcet' ) ),
+					esc_html( _nx( '1 response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'dulcet' ) ),
 					number_format_i18n( get_comments_number() ),
 					'<span>' . get_the_title() . '</span>'
 				);
@@ -52,6 +52,7 @@ if ( post_password_required() ) {
 				wp_list_comments( array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					'callback' => 'dulcet_comment',
 				) );
 			?>
 		</ol><!-- .comment-list -->
@@ -78,8 +79,12 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'dulcet' ); ?></p>
 	<?php
 	endif;
-
-	comment_form();
+	$args  = array(
+				'title_reply' => esc_html__( 'Leave a Comment', 'dulcet' ),
+				'label_submit' => esc_html__( 'Submit Comment', 'dulcet' ),
+				'comment_notes_before' => ''
+			);
+	comment_form( $args );
 	?>
 
 </div><!-- #comments -->

@@ -34,36 +34,24 @@
 
 	<header class="entry-header">
 		<?php
-			global $post;
-			$content = do_shortcode( apply_filters( 'the_content', $post->post_content ) );
-			$embeds =  get_media_embedded_in_content( $content ) ;
+			the_title( '<h1 class="entry-title">', '</h1>' );
 
-		    $pattern = get_shortcode_regex();
-
-			if ( $post_format == 'video' || $post_format == 'audio' ) {
-				echo $embeds[0];
-			}
-			else if ( $post_format == 'gallery' ) {
-				if (   preg_match_all( '/'. $pattern .'/s', $post->post_content, $matches )
-			        && array_key_exists( 2, $matches )
-			        && in_array( 'gallery', $matches[2] ) )
-			    {
-			        echo do_shortcode( $matches[0][0] );
-			    }
-			}
-			else if ( $post_format == 'image' || $post_format == 'aside' || $post_format == 'standard' ) {
+			if ( $post_format == 'image' || $post_format == 'aside' || $post_format == 'standard' ) {
 				if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'large' );
+					the_post_thumbnail( 'large' );
 				}
 			}
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 
-			?>
+		?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
-			the_excerpt();
+            the_content();
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'dulcet' ),
+				'after'  => '</div>',
+			) );
 		?>
 	</div><!-- .entry-content -->
 

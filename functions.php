@@ -36,6 +36,15 @@ function dulcet_setup() {
 	add_theme_support( 'title-tag' );
 
 	/*
+	 * Enable support for custom logo.
+	 *
+	 */
+	add_theme_support( 'custom-logo', array(
+		'height'      => 54,
+		'width'       => 192,
+		'flex-height' => true,
+	) );
+	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
@@ -45,6 +54,7 @@ function dulcet_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'dulcet' ),
+		'social'  => esc_html__( 'Social', 'dulcet' ),
 	) );
 
 	/*
@@ -69,6 +79,9 @@ function dulcet_setup() {
 		'video',
 		'quote',
 		'link',
+		'audio',
+		'gallery',
+		'chat',
 	) );
 
 	// Set up the WordPress core custom background feature.
@@ -88,7 +101,7 @@ add_action( 'after_setup_theme', 'dulcet_setup' );
  * @global int $content_width
  */
 function dulcet_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'dulcet_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters( 'dulcet_content_width', 660 );
 }
 add_action( 'after_setup_theme', 'dulcet_content_width', 0 );
 
@@ -104,21 +117,128 @@ function dulcet_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'dulcet' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
 	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Header Text', 'dulcet' ),
+		'id'            => 'header-text',
+		'description'   => esc_html__( 'Add widgets here.', 'dulcet' ),
+		'before_widget' => '<section id="%1$s" class=" %2$s">',
+		'after_widget'  => '</section>'
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 1', 'dulcet' ),
+		'id'            => 'footer-1',
+		'description'   => esc_html__( 'Add widgets here.', 'dulcet' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 2', 'dulcet' ),
+		'id'            => 'footer-2',
+		'description'   => esc_html__( 'Add widgets here.', 'dulcet' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 3', 'dulcet' ),
+		'id'            => 'footer-3',
+		'description'   => esc_html__( 'Add widgets here.', 'dulcet' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer 4', 'dulcet' ),
+		'id'            => 'footer-4',
+		'description'   => esc_html__( 'Add widgets here.', 'dulcet' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	) );
+
 }
 add_action( 'widgets_init', 'dulcet_widgets_init' );
+
+
+if ( ! function_exists( 'dulcet_fonts_url' ) ) :
+/**
+ * @return string Google fonts URL for the theme.
+ */
+function dulcet_fonts_url() {
+	$fonts_url = '';
+	$fonts     = array();
+	$subsets   = 'latin,latin-ext';
+
+	/*
+	 * Translators: If there are characters in your language that are not supported
+	 * by Noto Sans, translate this to 'off'. Do not translate into your own language.
+	 */
+	if ( 'off' !== _x( 'on', 'Lato font: on or off', 'dulcet' ) ) {
+		$fonts[] = 'Lato:400italic,600italic,700italic,400,600,700';
+	}
+
+	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'dulcet' ) ) {
+		$fonts[] = 'Open Sans:400italic,600italic,700italic,400,600,700';
+	}
+
+	/*
+	 * Translators: To add an additional character subset specific to your language,
+	 * translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
+	 */
+	$subset = _x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', 'dulcet' );
+
+	if ( 'cyrillic' == $subset ) {
+		$subsets .= ',cyrillic,cyrillic-ext';
+	} elseif ( 'greek' == $subset ) {
+		$subsets .= ',greek,greek-ext';
+	} elseif ( 'devanagari' == $subset ) {
+		$subsets .= ',devanagari';
+	} elseif ( 'vietnamese' == $subset ) {
+		$subsets .= ',vietnamese';
+	}
+
+	if ( $fonts ) {
+		$fonts_url = add_query_arg( array(
+			'family' => urlencode( implode( '|', $fonts ) ),
+			'subset' => urlencode( $subsets ),
+		), 'https://fonts.googleapis.com/css' );
+	}
+
+	return $fonts_url;
+}
+endif;
+
 
 /**
  * Enqueue scripts and styles.
  */
 function dulcet_scripts() {
+	// Add custom fonts, used in the main stylesheet.
+	wp_enqueue_style( 'dulcet-fonts', dulcet_fonts_url(), array(), null );
+
+	// Add Font Awesome, used in the main stylesheet.
+	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/assets/genericons/genericons.css', array(), '3.4.1' );
+
 	wp_enqueue_style( 'dulcet-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'dulcet-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'dulcet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'dulcet-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'dulcet-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'dulcet-plugins', get_template_directory_uri() . '/assets/js/plugins.js', array(), '20151215', true );
+	wp_enqueue_script( 'dulcet-theme', get_template_directory_uri() . '/assets/js/theme.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
