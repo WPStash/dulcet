@@ -1,7 +1,7 @@
 === Dulcet ===
 
 Contributors: famethemes
-Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, sticky-post, threaded-comments, translation-ready, footer-widgets
+Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, sticky-post, threaded-comments, translation-ready, footer-widgets, blog, news, photography
 
 Requires at least: 4.0
 Tested up to: 4.4.2
