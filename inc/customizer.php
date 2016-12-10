@@ -191,7 +191,6 @@ function dulcet_customize_register( $wp_customize ) {
 		        $wp_customize->add_setting( 'footer_widgets_bg',
 		            array(
 		                'sanitize_callback' => 'dulcet_sanitize_hex_color',
-		            //    'sanitize_js_callback' => 'maybe_hash_hex_color',
 		                'default'           => '',
 		            )
 		        );
@@ -209,7 +208,6 @@ function dulcet_customize_register( $wp_customize ) {
 		        $wp_customize->add_setting( 'footer_widgets_color',
 		            array(
 		                'sanitize_callback' => 'dulcet_sanitize_hex_color',
-		                //'sanitize_js_callback' => 'maybe_hash_hex_color',
 		                'default'           => '',
 		            )
 		        );
@@ -268,9 +266,6 @@ function dulcet_sanitize_file_url( $file_url ) {
 	return $output;
 }
 
-function dulcet_sanitize_number( $input ) {
-    return force_balance_tags( $input );
-}
 
 function dulcet_sanitize_select( $input, $setting ) {
 	$input = sanitize_key( $input );
@@ -293,12 +288,4 @@ function dulcet_sanitize_checkbox( $checked ) {
 
 function dulcet_sanitize_text( $string ) {
 	return wp_kses_post( balanceTags( $string ) );
-}
-
-function dulcet_sanitize_number_absint( $number, $setting ) {
-	// Ensure $number is an absolute integer (whole number, zero or greater).
-	$number = absint( $number );
-
-	// If the input is an absolute integer, return it; otherwise, return the default
-	return ( $number ? $number : $setting->default );
 }
