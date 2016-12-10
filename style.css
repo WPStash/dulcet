@@ -1671,7 +1671,10 @@ h1.entry-title {
 .blog .wp-post-image,
 .blog .wp-audio-shortcode,
 .blog .wp-video-shortcode,
-.blog .fluid-width-video-wrapper {
+.blog .fluid-width-video-wrapper, .archive .wp-post-image,
+.archive .wp-audio-shortcode,
+.archive .wp-video-shortcode,
+.archive .fluid-width-video-wrapper {
 	margin-bottom: 20px;
 }
 

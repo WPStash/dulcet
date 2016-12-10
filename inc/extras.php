@@ -30,14 +30,18 @@ add_filter( 'body_class', 'dulcet_body_classes' );
 
 
 function dulcet_custom_infinite_more() {
-if ( is_home() || is_archive() ) {
-?>
-    <script type="text/javascript">
-    //<![CDATA[
-    infiniteScroll.settings.text = "Load More";
-    //]]>
-    </script>
-<?php }
+	global $wp_query;
+	if ( is_home() || is_archive() ) {
+		if ( $wp_query->max_num_pages > 1 ) {
+	?>
+	    <script type="text/javascript">
+	    //<![CDATA[
+	    infiniteScroll.settings.text = "Load More";
+	    //]]>
+	    </script>
+	<?php
+		}
+	}
 }
 add_action( 'wp_footer', 'dulcet_custom_infinite_more', 3 );
 
