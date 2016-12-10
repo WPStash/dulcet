@@ -13,7 +13,6 @@
 	<?php
 	$post_format = get_post_format();
 	$show = esc_attr( get_theme_mod( 'hide_post_format', 1 ) );
-	echo 'show value: ' . $show;
 	if ( $show != 1 ) {
 		if ( $post_format != '' ) {
 		?>

@@ -16,7 +16,7 @@ get_header(); ?>
 
 <div class="container">
 
-	<?php $frontpage_layout = get_theme_mod( 'frontpage_layout', 0 ); ?>
+	<?php $frontpage_layout = esc_attr( get_theme_mod( 'frontpage_layout', 0 ) ); ?>
 
 	<?php if ( $frontpage_layout == 1 ) {
 		echo '<div class="left-sidebar">';

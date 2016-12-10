@@ -7,37 +7,6 @@
  * @package Dulcet
  */
 
-if ( ! function_exists( 'dulcet_posted_on' ) ) :
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
-function dulcet_posted_on() {
-	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-	}
-
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-	);
-
-	$posted_on = sprintf(
-		esc_html_x( '%s', 'post date', 'dulcet' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
-
-	$byline = sprintf(
-		esc_html_x( 'by%s', 'post author', 'dulcet' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-	);
-
-	echo '<span class="posted-on"><i class="genericon genericon-month"></i> ' . $posted_on . '</span><span class="total-comments"> ' . $byline . '</span>'; // WPCS: XSS OK.
-
-}
-endif;
 
 if ( ! function_exists( 'dulcet_entry_footer' ) ) :
 /**
@@ -159,11 +128,11 @@ if ( ! function_exists( 'dulcet_footer_site_info' ) ) {
         ?>
 		<div class="site-copyright">
 			<div class="copyright-text">
-				<?php printf(esc_html__('Copyright %1$s %2$s %3$s', 'dulcet'), '&copy;', esc_attr(date('Y')), esc_attr(get_bloginfo())); ?>
+				<?php printf( esc_html__('Copyright %1$s %2$s %3$s', 'dulcet'), '&copy;', esc_attr( date('Y') ), esc_attr( get_bloginfo() ) ); ?>
 			</div>
 
 	        <div class="design-by">
-	        	<?php printf(esc_html__('%1$s theme by %2$s', 'dulcet'), 'Dulcet', '<a href="' . esc_url('https://wpstash.com', 'dulcet') . '">WPStash</a>' ); ?>
+	        	<?php printf( esc_html__( '%1$s theme by %2$s', 'dulcet' ), 'Dulcet', '<a href="' . esc_url('https://wpstash.com', 'dulcet' ) . '">WPStash</a>' ); ?>
 	        </div>
 
 		</div>
@@ -262,18 +231,18 @@ if ( ! function_exists( 'dulcet_custom_inline_style' ) ) {
      *
      */
 	function dulcet_custom_inline_style( ) {
-		$image   	= get_theme_mod( 'image_icon', '#7baa74' );
-    	$gallery   	= get_theme_mod( 'gallery_icon', '#ff9000' );
-		$video   	= get_theme_mod( 'video_icon', '#ff6600' );
-		$link   	= get_theme_mod( 'link_icon', '#ff0006' );
-		$quote  	= get_theme_mod( 'quote_icon', '#9e9e9e' );
-		$audio   	= get_theme_mod( 'audio_icon', '#ba7cc0' );
-		$aside   	= get_theme_mod( 'aside_icon', '#d56e6f' );
-		$standard   = get_theme_mod( 'standard_icon', '#000' );
-		$chat   	= get_theme_mod( 'chat_icon', '#24CEFF' );
+		$image   	= esc_attr( get_theme_mod( 'image_icon', '#7baa74' ) );
+    	$gallery   	= esc_attr( get_theme_mod( 'gallery_icon', '#ff9000' ) );
+		$video   	= esc_attr( get_theme_mod( 'video_icon', '#ff6600' ) );
+		$link   	= esc_attr( get_theme_mod( 'link_icon', '#ff0006' ) );
+		$quote  	= esc_attr( get_theme_mod( 'quote_icon', '#9e9e9e' ) );
+		$audio   	= esc_attr( get_theme_mod( 'audio_icon', '#ba7cc0' ) );
+		$aside   	= esc_attr( get_theme_mod( 'aside_icon', '#d56e6f' ) );
+		$standard   = esc_attr( get_theme_mod( 'standard_icon', '#000' ) );
+		$chat   	= esc_attr( get_theme_mod( 'chat_icon', '#24CEFF' ) );
 
-		$widget_bg  = get_theme_mod( 'footer_widgets_bg' );
-		$widget_text_color  = get_theme_mod( 'footer_widgets_color' );
+		$widget_bg  = esc_attr( get_theme_mod( 'footer_widgets_bg' ) );
+		$widget_text_color  = esc_attr( get_theme_mod( 'footer_widgets_color' ) );
 
         $custom_css = "
 		.post-format-icon.image-icon {
@@ -315,7 +284,7 @@ if ( ! function_exists( 'dulcet_custom_inline_style' ) ) {
         ";
 
 		if ( get_header_image() ) :
-			$custom_css .= '.site-header {  background-image: url('. esc_url( get_header_image() ) .'); background-repeat: no-repeat; }';
+			$custom_css .= '.site-header {  background-image: url('. esc_url( get_header_image() ) .'); background-repeat: no-repeat; background-size : cover; }';
 		endif;
 
 
