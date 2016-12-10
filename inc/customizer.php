@@ -27,6 +27,35 @@ function dulcet_customize_register( $wp_customize ) {
 			)
 		);
 		// section
+
+		// index layout
+		$wp_customize->add_section( 'front_page_layout' ,
+			array(
+				'priority'    => 3,
+				'title'       => esc_html__( 'Layout', 'dulcet' ),
+				'description' => '',
+				'panel'       => 'dulcet_theme_options_panel',
+			)
+		);
+		$wp_customize->add_setting( 'frontpage_layout',
+			array(
+				'sanitize_callback' => 'dulcet_sanitize_select',
+				'default'           => 0,
+			)
+		);
+		$wp_customize->add_control( 'frontpage_layout',
+			array(
+				'type'        => 'radio',
+				'label'       => esc_html__('Frontpage Layout', 'dulcet'),
+				'section'     => 'front_page_layout',
+				'choices' => array(
+					1  => esc_html__('Left Sidebar', 'dulcet'),
+					0  => esc_html__('Right Sidebar', 'dulcet'),
+				)
+			)
+		);
+
+
 		$wp_customize->add_section( 'icons_color' ,
 			array(
 				'priority'    => 3,
@@ -166,7 +195,7 @@ function dulcet_customize_register( $wp_customize ) {
 		        // Features columns
 		        $wp_customize->add_setting( 'footer_layout',
 		            array(
-		                'sanitize_callback' => 'sanitize_text_field',
+		                'sanitize_callback' => 'dulcet_sanitize_number',
 		                'default'           => 3,
 		            )
 		        );
@@ -220,25 +249,7 @@ function dulcet_customize_register( $wp_customize ) {
 		                )
 		            )
 		        );
-				// index layout
-				$wp_customize->add_setting( 'frontpage_layout',
-		            array(
-		                'sanitize_callback' => 'dulcet_sanitize_select',
-		                'default'           => 0,
-		            )
-		        );
-		        $wp_customize->add_control( 'frontpage_layout',
-		            array(
-		                'type'        => 'radio',
-		                'label'       => esc_html__('Frontpage Layout', 'dulcet'),
-		                'section'     => 'static_front_page',
-		                'description' => '',
-		                'choices' => array(
-		                    1  => esc_html__('Left Sidebar', 'dulcet'),
-		                    0  => esc_html__('Right Sidebar', 'dulcet'),
-		                )
-		            )
-		        );
+
 
 }
 add_action( 'customize_register', 'dulcet_customize_register' );
@@ -266,6 +277,9 @@ function dulcet_sanitize_file_url( $file_url ) {
 	return $output;
 }
 
+function dulcet_sanitize_number( $input ) {
+    return balanceTags( $input );
+}
 
 function dulcet_sanitize_select( $input, $setting ) {
 	$input = sanitize_key( $input );
