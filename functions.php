@@ -233,7 +233,9 @@ function dulcet_scripts() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'dulcet-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
 	wp_enqueue_script( 'dulcet-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
-	wp_enqueue_script( 'dulcet-plugins', get_template_directory_uri() . '/assets/js/plugins.js', array(), '20151215', true );
+	wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/assets/js/fitvids.js', array(), '20151215', true );
+	wp_enqueue_script( 'classie', get_template_directory_uri() . '/assets/js/classie.js', array(), '20151215', true );
+	wp_enqueue_script( 'sidebarEffects', get_template_directory_uri() . '/assets/js/sidebarEffects.js', array(), '20151215', true );
 	wp_enqueue_script( 'dulcet-theme', get_template_directory_uri() . '/assets/js/theme.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
