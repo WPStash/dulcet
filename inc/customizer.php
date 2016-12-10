@@ -73,7 +73,7 @@ function dulcet_customize_register( $wp_customize ) {
 
 			$wp_customize->add_control( 'hide_post_format',
 				array(
-					'label'         => esc_html__( 'Hide Post Format', 'dulcet' ),
+					'label'         => esc_html__( 'Hide Post Format Icons', 'dulcet' ),
 					'section'    	=> 'icons_color',
 					'type'    	 	=> 'checkbox',
 					'description'   => esc_html__('Check this box to disable post format icon.', 'dulcet')
@@ -249,6 +249,75 @@ function dulcet_customize_register( $wp_customize ) {
 		                )
 		            )
 		        );
+
+
+				// Menu color
+		        $wp_customize->add_setting( 'menu_color',
+		            array(
+		                'sanitize_callback' => 'dulcet_sanitize_hex_color',
+		                'default'           => '#898989',
+		            )
+		        );
+		        $wp_customize->add_control( new WP_Customize_Color_Control(
+		                $wp_customize,
+		                'menu_color',
+		                array(
+		                    'label'       => esc_html__('Menu link color', 'dulcet'),
+		                    'section'     => 'colors',
+		                )
+		            )
+		        );
+
+				$wp_customize->add_setting( 'menu_hover_color',
+		            array(
+		                'sanitize_callback' => 'dulcet_sanitize_hex_color',
+		                'default'           => '#000',
+		            )
+		        );
+		        $wp_customize->add_control( new WP_Customize_Color_Control(
+		                $wp_customize,
+		                'menu_hover_color',
+		                array(
+		                    'label'       => esc_html__('Menu active/hover color', 'dulcet'),
+		                    'section'     => 'colors',
+		                )
+		            )
+		        );
+
+				// Social color
+				$wp_customize->add_setting( 'social_color',
+		            array(
+		                'sanitize_callback' => 'dulcet_sanitize_hex_color',
+		                'default'           => '#898989',
+		            )
+		        );
+		        $wp_customize->add_control( new WP_Customize_Color_Control(
+		                $wp_customize,
+		                'social_color',
+		                array(
+		                    'label'       => esc_html__('Header social color', 'dulcet'),
+		                    'section'     => 'colors',
+		                )
+		            )
+		        );
+
+				$wp_customize->add_setting( 'social_hover_color',
+		            array(
+		                'sanitize_callback' => 'dulcet_sanitize_hex_color',
+		                'default'           => '#000',
+		            )
+		        );
+		        $wp_customize->add_control( new WP_Customize_Color_Control(
+		                $wp_customize,
+		                'social_hover_color',
+		                array(
+		                    'label'       => esc_html__('Header social hover color', 'dulcet'),
+		                    'section'     => 'colors',
+		                )
+		            )
+		        );
+
+
 
 
 }

@@ -244,6 +244,12 @@ if ( ! function_exists( 'dulcet_custom_inline_style' ) ) {
 		$widget_bg  = esc_attr( get_theme_mod( 'footer_widgets_bg' ) );
 		$widget_text_color  = esc_attr( get_theme_mod( 'footer_widgets_color' ) );
 
+		$menu_color = esc_attr( get_theme_mod( 'menu_color', '#898989' ) );
+		$menu_hover_color = esc_attr( get_theme_mod( 'menu_hover_color', '#000' ) );
+
+		$social_color = esc_attr( get_theme_mod( 'social_color', '#898989' ) );
+		$social_hover_color = esc_attr( get_theme_mod( 'social_hover_color', '#000' ) );
+
         $custom_css = "
 		.post-format-icon.image-icon {
 			background-color: {$image};
@@ -281,6 +287,17 @@ if ( ! function_exists( 'dulcet_custom_inline_style' ) ) {
 		.copyright-text,
 		.design-by,
 		.site-info .site-copyright a { color: {$widget_text_color} }
+
+		.main-navigation a { color : $menu_color;}
+
+		.main-navigation a:hover,
+		.main-navigation .current_page_item > a,
+		.main-navigation .current-menu-item > a,
+		.main-navigation .current_page_ancestor > a
+		{ color: $menu_hover_color;}
+
+		.social-links ul a { color : $social_color;}
+		.social-links ul a:hover::before { color: $social_hover_color;}
         ";
 
 		if ( get_header_image() ) :
