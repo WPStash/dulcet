@@ -27,6 +27,7 @@ function dulcet_custom_header_setup() {
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
+		'flex-width'            => true,
 		'wp-head-callback'       => 'dulcet_header_style',
 	) ) );
 }
@@ -66,7 +67,9 @@ function dulcet_header_style() {
 		else :
 	?>
 		.site-title a,
-		.site-description {
+		.site-description,
+		.header-right,
+		.header-right p {
 			color: #<?php echo esc_attr( $header_text_color ); ?>;
 		}
 	<?php endif; ?>

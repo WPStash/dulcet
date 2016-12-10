@@ -1318,7 +1318,14 @@ a:hover, a:active {
 	}
 }
 
-.site-header .site-branding .site-title {
+.site-header .site-branding p {
+	margin-bottom: 0;
+	margin-top: 2px;
+	font-size: 13px;
+	font-style: italic;
+}
+
+.site-title {
 	font-size: 42px;
 	text-decoration: none;
 	margin: 0 0 5px 0;
@@ -1326,17 +1333,10 @@ a:hover, a:active {
 	font-family: 'Open Sans';
 }
 
-.site-header .site-branding .site-title a {
+.site-title a {
 	text-decoration: none;
 	font-weight: bold;
 	color: #111;
-}
-
-.site-header .site-branding p {
-	margin-bottom: 0;
-	margin-top: 2px;
-	font-size: 13px;
-	font-style: italic;
 }
 
 .header-right {

@@ -43,6 +43,7 @@ function dulcet_setup() {
 		'height'      => 54,
 		'width'       => 192,
 		'flex-height' => true,
+		'flex-width'  => true,
 	) );
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
@@ -84,11 +85,6 @@ function dulcet_setup() {
 		'chat',
 	) );
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'dulcet_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
 }
 endif;
 add_action( 'after_setup_theme', 'dulcet_setup' );

@@ -314,6 +314,10 @@ if ( ! function_exists( 'dulcet_custom_inline_style' ) ) {
 		.site-info .site-copyright a { color: {$widget_text_color} }
         ";
 
+		if ( get_header_image() ) :
+			$custom_css .= '.site-header {  background-image: url('. esc_url( get_header_image() ) .'); background-repeat: no-repeat; }';
+		endif;
+
 
 		wp_add_inline_style( 'dulcet-style', $custom_css );
 
