@@ -97,7 +97,7 @@ add_action( 'after_setup_theme', 'dulcet_setup' );
  * @global int $content_width
  */
 function dulcet_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'dulcet_content_width', 660 );
+	$GLOBALS['content_width'] = apply_filters( 'dulcet_content_width', 1040 );
 }
 add_action( 'after_setup_theme', 'dulcet_content_width', 0 );
 
