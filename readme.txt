@@ -29,10 +29,6 @@ Hi. I'm a starter theme called Dulcet, or underscores, if you like. I'm a theme 
 Dulcet includes support for Infinite Scroll in Jetpack.
 Dulcet includes support for Tiled Galleries in Jetpack.
 
-== Changelog ==
-
-= 1.0 - May 12 2015 =
-* Initial release
 
 == Credits ==
 
@@ -45,3 +41,9 @@ Dulcet includes support for Tiled Galleries in Jetpack.
 * classie https://github.com/ded/bonzo, (C) 2014 Dustin Diaz, [MIT](https://opensource.org/licenses/MIT)
 * Genericons http://www.genericons.com, (C) 2013-2015 Automattic.com, GNU GPL, Version 2
 * Image use in screenshot: https://www.pexels.com/photo/chrome-bmw-grille-113176/. [CC0](https://creativecommons.org/publicdomain/zero/1.0/)
+
+
+== Changelog ==
+
+= 0.0.3 =
+* Initial release
