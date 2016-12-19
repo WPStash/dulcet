@@ -1,4 +1,11 @@
 <?php
+/**
+ * Dulcet Recent Posts widget
+ *
+ * @package Dulcet
+ */
+
+
 function dulcet_posts_widget() {
     register_widget( 'Dulcet_Posts_Widget' );
 }
