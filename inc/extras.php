@@ -29,23 +29,6 @@ function dulcet_body_classes( $classes ) {
 add_filter( 'body_class', 'dulcet_body_classes' );
 
 
-function dulcet_custom_infinite_more() {
-	global $wp_query;
-	if ( is_home() || is_archive() ) {
-		if ( $wp_query->max_num_pages > 1 ) {
-	?>
-	    <script type="text/javascript">
-	    //<![CDATA[
-	    infiniteScroll.settings.text = "Load More";
-	    //]]>
-	    </script>
-	<?php
-		}
-	}
-}
-add_action( 'wp_footer', 'dulcet_custom_infinite_more', 3 );
-
-
 function dulcet_excerpt_more( $more ) {
     return sprintf( '<a class="more-link" href="%1$s">%2$s <span class="meta-nav">&rarr;</span></a>',
         get_permalink( get_the_ID() ),
