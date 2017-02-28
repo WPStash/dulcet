@@ -18,7 +18,7 @@ function dulcet_custom_header_setup() {
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'flex-width'            => true,
+		'flex-width'             => true,
 		'wp-head-callback'       => 'dulcet_header_style',
 	) ) );
 }
@@ -37,9 +37,9 @@ function dulcet_header_style() {
 	 * If no custom options for text are set, let's bail.
 	 * get_header_textcolor() options: Any hex value, 'blank' to hide text. Default: HEADER_TEXTCOLOR.
 	 */
-	if ( HEADER_TEXTCOLOR === $header_text_color ) {
-		return;
-	}
+	if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
+  		return;
+  	}
 
 	// If we get this far, we have custom styles. Let's do this.
 	?>

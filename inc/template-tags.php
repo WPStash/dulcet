@@ -26,17 +26,13 @@ function dulcet_entry_footer() {
 		esc_html( get_the_modified_date() )
 	);
 
-	$posted_on = sprintf(
-		esc_html_x( '%s', 'post date', 'dulcet' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
-	echo '<span class="posted-on"><i class="genericon genericon-month"></i> ' . $posted_on . '</span>';
+	echo '<span class="posted-on"><i class="genericon genericon-month"></i> <a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>';
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link"><i class="genericon genericon-comment"></i> ';
 	?>
 		<a href="<?php comments_link() ?>">
-	<?php comments_number( '0 response', '1 response', '% responses' ); ?>
+			<?php comments_number( '0 response', '1 response', '% responses' ); ?>
 		</a>
 	<?php
 		echo '</span>';
@@ -48,7 +44,7 @@ function dulcet_entry_footer() {
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'dulcet' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links"><i class="genericon genericon-tag"></i> ' . esc_html__( '%1$s', 'dulcet' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links"><i class="genericon genericon-tag"></i> ' . $tags_list . '</span>'  ); // WPCS: XSS OK.
 		}
 	}
 
@@ -154,7 +150,7 @@ if ( ! function_exists( 'dulcet_comment' ) ) :
  * @return void
  */
 function dulcet_comment( $comment, $args, $depth ) {
-    $GLOBALS['comment'] = $comment;
+
     switch ( $comment->comment_type ) :
         case 'pingback' :
         case 'trackback' :
@@ -180,12 +176,7 @@ function dulcet_comment( $comment, $args, $depth ) {
                         printf( '<cite><b class="fn">%1$s</b></cite>',
                             get_comment_author_link()
                         );
-                        printf( '<a class="comment-time" href="%1$s"><time datetime="%2$s">%3$s</time></a>',
-                            esc_url( get_comment_link( $comment->comment_ID ) ),
-                            get_comment_time( 'c' ),
-                            /* translators: 1: date, 2: time */
-                            sprintf( __( '%1$s', 'dulcet' ), get_comment_date() )
-                        );
+                        printf( esc_html__( '%1$s at %2$s', 'dulcet' ), get_comment_date(), get_comment_time() );
                         comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'dulcet' ), 'after' => '', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
                         edit_comment_link( __( 'Edit', 'dulcet' ), '<span class="edit-link">', '</span>' );
                     ?>

@@ -213,7 +213,7 @@ function dulcet_fonts_url() {
 		), 'https://fonts.googleapis.com/css' );
 	}
 
-	return $fonts_url;
+	return esc_url_raw( $fonts_url );
 }
 endif;
 
@@ -230,13 +230,12 @@ function dulcet_scripts() {
 
 	wp_enqueue_style( 'dulcet-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'dulcet-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
-	wp_enqueue_script( 'dulcet-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
-	wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/assets/js/fitvids.js', array(), '20151215', true );
-	wp_enqueue_script( 'classie', get_template_directory_uri() . '/assets/js/classie.js', array(), '20151215', true );
-	wp_enqueue_script( 'sidebarEffects', get_template_directory_uri() . '/assets/js/sidebarEffects.js', array(), '20151215', true );
-	wp_enqueue_script( 'dulcet-theme', get_template_directory_uri() . '/assets/js/theme.js', array(), '20151215', true );
+	wp_enqueue_script( 'dulcet-navigation', get_template_directory_uri() . '/assets/js/navigation.js',  array( 'jquery' ), '20151215', true );
+	wp_enqueue_script( 'dulcet-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array('jquery'), '20151215', true );
+	wp_enqueue_script( 'fitvids', get_template_directory_uri() . '/assets/js/fitvids.js', array('jquery'), '20151215', true );
+	wp_enqueue_script( 'classie', get_template_directory_uri() . '/assets/js/classie.js', array('jquery'), '20151215', true );
+	wp_enqueue_script( 'sidebarEffects', get_template_directory_uri() . '/assets/js/sidebarEffects.js', array('jquery'), '20151215', true );
+	wp_enqueue_script( 'dulcet-theme', get_template_directory_uri() . '/assets/js/theme.js', array('jquery'), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

@@ -5,7 +5,7 @@ Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, c
 
 Requires at least: 4.0
 Tested up to: 4.4.2
-Stable tag: 0.0.2
+Stable tag: 0.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,5 +45,5 @@ Dulcet includes support for Tiled Galleries in Jetpack.
 
 == Changelog ==
 
-= 0.0.5 =
+= 0.0.6 =
 * Initial release
