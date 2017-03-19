@@ -453,6 +453,7 @@ img {
 	/* Make sure images are scaled correctly. */
 	max-width: 100%;
 	/* Adhere to container width. */
+	vertical-align: middle;
 }
 
 table {
@@ -473,11 +474,12 @@ input[type="submit"] {
 	background: #000;
 	box-shadow: none;
 	color: #fff;
-	font-size: 13.6px;
-	font-size: 0.85rem;
+	font-size: 11.2px;
+	font-size: 0.7rem;
 	padding: 13px 20px;
 	cursor: pointer;
 	text-shadow: none;
+	letter-spacing: 1px;
 	width: 100%;
 	text-transform: uppercase;
 }
@@ -573,6 +575,7 @@ a:hover, a:active {
 ## Menus
 --------------------------------------------------------------*/
 .main-menu {
+	border-top: 1px solid #e6e6e6;
 	border-bottom: 1px solid #e6e6e6;
 	width: 100%;
 }
@@ -596,7 +599,7 @@ a:hover, a:active {
 }
 
 .main-navigation ul ul {
-	border-top: none;
+	border-top: 1px solid #e6e6e6;
 	padding: 0;
 	float: left;
 	position: absolute;
@@ -635,8 +638,8 @@ a:hover, a:active {
 }
 
 .main-navigation ul ul a {
-	padding: 10px 25px;
-	text-align: center;
+	padding: 10px 20px;
+	text-align: left;
 }
 
 .main-navigation ul ul a:hover {
@@ -1224,7 +1227,7 @@ a:hover, a:active {
 }
 
 .widget-title {
-	padding-bottom: 10px;
+	padding-bottom: 0;
 	margin-bottom: 10px;
 	margin-top: 0;
 	text-transform: uppercase;
@@ -1307,11 +1310,11 @@ a:hover, a:active {
 }
 
 .dulcet-posts-widget .widget-posts li .entry-title {
-	font-size: 16px;
+	font-size: 14px;
 	text-transform: none;
 	color: #222;
 	margin-bottom: 0px;
-	margin-top: 0;
+	margin-top: -5px;
 	display: inline-block;
 	font-weight: 500;
 }
@@ -1378,6 +1381,12 @@ a:hover, a:active {
 	text-decoration: none;
 	font-weight: bold;
 	color: #111;
+}
+
+@media (max-width: 991px) {
+	.site-title {
+		text-align: center;
+	}
 }
 
 .header-right {
@@ -1644,7 +1653,7 @@ a:hover, a:active {
 .footer-widgets .widget li::before {
 	content: "\f501";
 	font-family: 'Genericons';
-	font-size: 12px;
+	font-size: 9px;
 	position: absolute;
 	top: 5px;
 	left: 0px;
@@ -1652,6 +1661,16 @@ a:hover, a:active {
 
 .footer-widgets .widget li a {
 	padding-left: 15px;
+}
+
+@media (max-width: 767px) {
+	.footer-widgets .footer-col-1,
+	.footer-widgets .footer-col-2,
+	.footer-widgets .footer-col-3,
+	.footer-widgets .footer-col-4 {
+		width: 100%;
+		padding: 0;
+	}
 }
 
 .site-info {
@@ -1742,8 +1761,11 @@ h1.entry-title {
 .blog .fluid-width-video-wrapper, .archive .wp-post-image,
 .archive .wp-audio-shortcode,
 .archive .wp-video-shortcode,
-.archive .fluid-width-video-wrapper {
-	margin-bottom: 20px;
+.archive .fluid-width-video-wrapper, .search .wp-post-image,
+.search .wp-audio-shortcode,
+.search .wp-video-shortcode,
+.search .fluid-width-video-wrapper {
+	margin-bottom: 15px;
 }
 
 /* Post format icons */
@@ -1906,7 +1928,7 @@ h1.entry-title {
 
 h2.entry-title {
 	font-size: 24px;
-	line-height: 20px;
+	line-height: 24px;
 	font-weight: normal;
 	margin: 0 0 15px;
 }
@@ -2192,7 +2214,7 @@ h2.entry-title.mt20 {
 	border-bottom: 1px solid #e5e5e5;
 	font-size: 13px;
 	margin-bottom: 20px;
-	padding-bottom: 15px;
+	padding-bottom: 5px;
 	text-transform: uppercase;
 }
 
