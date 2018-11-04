@@ -128,7 +128,7 @@ if ( ! function_exists( 'dulcet_footer_site_info' ) ) {
 			</div>
 
 	        <div class="design-by">
-	        	<?php printf( esc_html__( '%1$s theme by %2$s', 'dulcet' ), 'Dulcet', '<a href="' . esc_url('https://wpstash.com', 'dulcet' ) . '">WPStash</a>' ); ?>
+	        	<?php printf( esc_html__( '%1$s theme by %2$s', 'dulcet' ), 'Dulcet', '<a rel="nofollow" href="' . esc_url('https://freeresponsivethemes.com/', 'dulcet' ) . '">FRT</a>' ); ?>
 	        </div>
 
 		</div>

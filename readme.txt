@@ -45,5 +45,9 @@ Dulcet includes support for Tiled Galleries in Jetpack.
 
 == Changelog ==
 
+= 0.0.7 =
+* Update Author Name & Link
+* Support Gutenberg
+
 = 0.0.6 =
 * Initial release
