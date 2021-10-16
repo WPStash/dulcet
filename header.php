@@ -21,6 +21,11 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php
+if ( function_exists( 'wp_body_open' ) ) {
+	wp_body_open();
+}
+?>
 <div id="page" class="site">
 
 	<!-- begin .header-mobile-menu -->
@@ -29,7 +34,7 @@
 			<button class="close-button" id="closemenu"><span class="genericon genericon-close"></span></button>
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="home-button"><i class="genericon genericon-home"></i></a>
 		</div>
-		<?php wp_nav_menu( array('theme_location' => 'primary','echo' => true,'items_wrap' => '<ul>%3$s</ul>')); ?>
+		<?php  wp_nav_menu( array('theme_location' => 'primary','echo' => true,'items_wrap' => '<ul>%3$s</ul>'));  ?>
 	</nav>
 	<!-- end .header-mobile-menu -->
 	<div class="site-pusher">
@@ -57,7 +62,7 @@
 					<?php
 					$description = get_bloginfo( 'description', 'display' );
 					if ( $description || is_customize_preview() ) : ?>
-						<p class="site-description"><?php echo esc_attr( $description ); /* WPCS: xss ok. */ ?></p>
+						<p class="site-description"><?php echo esc_html( $description ); /* WPCS: xss ok. */ ?></p>
 					<?php
 					endif; ?>
 
@@ -81,11 +86,11 @@
 				<button class="top-mobile-menu-button mobile-menu-button" data-effect="st-effect-1" type="button"><i class="genericon genericon-menu"></i></button>
 				<nav id="site-navigation" class="main-navigation" role="navigation">
 
-						<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+						<?php  wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) );  ?>
 				</nav><!-- #site-navigation -->
 
 				<div class="social-menu">
-					<?php wp_nav_menu( array( 'theme_location' => 'social', 'menu_id' => 'menu-social', 'container_id' => 'menu-social', 'container_class' => 'social-links', 'link_before' => '<span class="screen-reader-text">',  'link_after'   => '</span>'  ) ); ?>
+					<?php if ( has_nav_menu('social') ) { wp_nav_menu( array( 'theme_location' => 'social', 'menu_id' => 'menu-social', 'container_id' => 'menu-social', 'container_class' => 'social-links', 'link_before' => '<span class="screen-reader-text">',  'link_after'   => '</span>'  ) ); } ?>
 				</div>
 			</div>
 		</div>

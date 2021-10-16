@@ -169,13 +169,13 @@
 }
 
 /* search form */
-.search-form {
+.wp-block-search {
     position: relative;
     input {
         height: 45px;
         background: #fff;
     }
-    .search-submit {
+    button[type="submit"] {
         display: none;
         position: absolute;
         top: 0;

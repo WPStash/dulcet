@@ -3,9 +3,9 @@
 Contributors: famethemes
 Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, sticky-post, threaded-comments, translation-ready, footer-widgets, blog, news, photography
 
-Requires at least: 4.0
-Tested up to: 4.4.2
-Stable tag: 0.0.6
+Requires at least: 5.0
+Tested up to: 5.8.1
+Stable tag: 0.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,8 @@ Dulcet includes support for Tiled Galleries in Jetpack.
 
 
 == Changelog ==
+= 0.0.8 =
+* WordPress 5.8 Compatible.
 
 = 0.0.7 =
 * Update Author Name & Link
